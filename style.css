@@ -3,76 +3,65 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Body background - dark stormy */
+/* Body with GIF background */
 body {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+  background: url('./hir.gif') no-repeat center center/cover;
   overflow: hidden;
-  position: relative;
-  color: #fff;
 }
 
 /* App container */
 .app-container {
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
+  max-width: 400px;
   padding: 20px;
 }
 
 /* Weather card */
 .weather-card {
   position: relative;
-  background: #111;
-  border: 2px solid #00ffff;
-  border-radius: 16px;
-  width: 350px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 20px;
   padding: 25px 20px;
   text-align: center;
-  box-shadow: 0 0 15px #00ffff;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  transition: 0.3s;
 }
 
-/* Electric border hover - realistic flicker */
-.weather-card:hover {
-  animation: electricFlicker 0.15s infinite;
-  box-shadow:
-    0 0 10px #00ffff,
-    0 0 20px #00e5ff,
-    0 0 35px #00ccff,
-    inset 0 0 10px rgba(0,255,255,0.3);
+/* Thunder / electric effect */
+.weather-card:hover .thunder-overlay {
+  opacity: 1;
+  animation: thunderFlash 1s infinite;
 }
 
-/* Flicker keyframes */
-@keyframes electricFlicker {
-  0% { box-shadow: 0 0 15px #00ffff, 0 0 35px #00ccff; }
-  25% { box-shadow: 0 0 20px #00e5ff, 0 0 40px #00ffff; }
-  50% { box-shadow: 0 0 25px #00ccff, 0 0 50px #00e5ff; }
-  75% { box-shadow: 0 0 20px #00ffff, 0 0 45px #00ccff; }
-  100% { box-shadow: 0 0 15px #00ffff, 0 0 35px #00ccff; }
+.thunder-overlay {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(255,255,255,0.15);
+  opacity:0;
+  pointer-events:none;
 }
 
-/* Card text */
+/* Heading */
 .weather-card h1 {
+  color: #fff;
+  text-shadow: 0 0 15px #00f0ff;
   margin-bottom: 20px;
-  color: #00e5ff;
-  text-shadow: 0 0 10px #00ffff;
 }
 
 /* Search box */
 .search-box {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
   margin-bottom: 20px;
 }
@@ -90,7 +79,7 @@ body {
   padding: 10px 15px;
   border-radius: 6px;
   border: none;
-  background: linear-gradient(135deg, #00e5ff, #0072ff);
+  background: linear-gradient(135deg, #00f0ff, #0072ff);
   color: #fff;
   cursor: pointer;
   transition: 0.3s;
@@ -98,61 +87,52 @@ body {
 
 .search-box button:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 10px #00f0ff;
 }
 
 /* Weather info */
 .weather-info {
-  margin-top: 15px;
+  color: #fff;
+  animation: fadeIn 1s ease;
 }
 
 .weather-info img {
-  width: 70px;
+  width: 80px;
   margin: 10px 0;
   animation: float 3s ease-in-out infinite;
 }
 
 .weather-info h2 {
   margin: 10px 0;
-  text-shadow: 0 0 10px #00ffff;
+  text-shadow: 0 0 10px #00f0ff;
 }
 
 .weather-info p {
   margin: 5px 0;
 }
 
-/* Float animation */
+/* Animations */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
 
-/* Thunder flash effect */
-.thunder-flash {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 80%);
-  opacity: 0;
-  pointer-events: none;
-  animation: thunderFlash 10s infinite;
-}
-
-.thunder-flash:nth-child(2) {
-  animation-delay: 5s;
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px);}
+  100% { opacity: 1; transform: translateY(0);}
 }
 
 @keyframes thunderFlash {
-  0%, 90%, 100% { opacity: 0; }
-  92% { opacity: 0.8; }
-  93% { opacity: 0.2; }
-  94% { opacity: 1; }
-  95%, 99% { opacity: 0; }
+  0% { opacity: 0.1; }
+  25% { opacity: 0.5; }
+  50% { opacity: 0.1; }
+  75% { opacity: 0.7; }
+  100% { opacity: 0.1; }
 }
 
 /* Responsive */
 @media (max-width: 480px) {
   .weather-card {
-    width: 90%;
     padding: 20px 15px;
   }
 

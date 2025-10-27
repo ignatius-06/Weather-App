@@ -1,64 +1,25 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather App⚡</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="thunder-bg">
-    <div class="flash"></div>
-    <div class="flash"></div>
-  </div>
-
-  <main class="weather-container">
-    <div class="weather-card">
-      <h1>SKY CAST ⚡</h1>
-
-      <div class="search-box">
-        <input type="text" id="cityInput" placeholder="Enter city name..." />
-        <button id="searchBtn">Search</button>
-      </div>
-
-      <div class="weather-info" id="weatherInfo">
-        <!-- Weather info will appear here -->
-      </div>
-    </div>
-  </main>
-
-  <script src="script.js"></script>
-</body>
-</html>
-
-
- -->
-
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather App</title>
+  <title>Thunder Weather App</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="app-container">
-    <div class="weather-card">
-      <h1>Weather App</h1>
+    <div class="weather-card" id="weatherCard">
+      <h1>Weather Forecast</h1>
       <div class="search-box">
         <input type="text" id="cityInput" placeholder="Enter city name..." />
         <button id="searchBtn">Search</button>
       </div>
-      <div id="weatherInfo" class="weather-info">
+      <div class="weather-info" id="weatherInfo">
         <!-- Weather info will appear here -->
       </div>
+      <div class="thunder-overlay"></div>
     </div>
   </div>
-
-  <!-- Thunder flashes -->
-  <div class="thunder-flash"></div>
-  <div class="thunder-flash"></div>
 
   <script src="script.js"></script>
 </body>
